@@ -4,7 +4,6 @@ body {
   text-align: center;
   font-family: sans-serif;
 }
-
 #joystick {
   margin: 50px auto;
   width: 200px;
@@ -14,11 +13,10 @@ body {
   position: relative;
   touch-action: none;
 }
-
 #stick {
   width: 60px;
   height: 60px;
-  background: #7dd6ff;
+  background: #4caf50;
   border-radius: 50%;
   position: absolute;
   left: 70px;

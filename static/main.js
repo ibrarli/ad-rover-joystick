@@ -1,28 +1,24 @@
 const joystick = document.getElementById("joystick");
 const stick = document.getElementById("stick");
-const ws = new WebSocket("ws://localhost:8765");
+const socket = io(); // Don't hardcode the IP here
 
 let dragging = false;
 const center = 100;
 const maxDist = 70;
 
-joystick.addEventListener("mousedown", startDrag);
-joystick.addEventListener("touchstart", startDrag);
+joystick.addEventListener("mousedown", () => dragging = true);
+joystick.addEventListener("touchstart", () => dragging = true);
 
 document.addEventListener("mouseup", stopDrag);
 document.addEventListener("touchend", stopDrag);
 document.addEventListener("mousemove", moveStick);
 document.addEventListener("touchmove", moveStick);
 
-function startDrag(e) {
-  dragging = true;
-}
-
-function stopDrag(e) {
+function stopDrag() {
   dragging = false;
   stick.style.left = "70px";
   stick.style.top = "70px";
-  send(0, 0); // Stop
+  send(0, 0);
 }
 
 function moveStick(e) {
@@ -45,9 +41,8 @@ function moveStick(e) {
 }
 
 function sendDirection(angle, intensity) {
-  let left = 0,
-    right = 0;
-  const power = 255
+  let left = 0, right = 0;
+  const power = Math.round(intensity * 255);
 
   if (angle >= -0.75 && angle <= 0.75) {
     left = power;
@@ -78,5 +73,5 @@ function sendDirection(angle, intensity) {
 }
 
 function send(left, right) {
-  ws.send(JSON.stringify({ left, right }));
+  socket.emit("move", { left, right });
 }

@@ -1,0 +1,26 @@
+body {
+  background: #111;
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+}
+
+#joystick {
+  margin: 50px auto;
+  width: 200px;
+  height: 200px;
+  background: #222;
+  border-radius: 50%;
+  position: relative;
+  touch-action: none;
+}
+
+#stick {
+  width: 60px;
+  height: 60px;
+  background: #7dd6ff;
+  border-radius: 50%;
+  position: absolute;
+  left: 70px;
+  top: 70px;
+}

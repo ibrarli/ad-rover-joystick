@@ -15,8 +15,9 @@ def index():
 def handle_move(data):
     left = data.get("left", 0)
     right = data.get("right", 0)
+    print(f"[MOTOR] Left: {left}, Right: {right}")
 
 if __name__ == "__main__":
     print("[✅] Flask + SocketIO server is running!")
-    print("👉 Open: http://192.168.16.112:500")
-    socketio.run(app, host="0.0.0.0", port=500)
+    print("👉 Open: http://192.168.16.112:6000")
+    socketio.run(app, host="0.0.0.0", port=6000)

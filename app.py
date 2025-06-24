@@ -15,7 +15,6 @@ def index():
 def handle_move(data):
     left = data.get("left", 0)
     right = data.get("right", 0)
-    print(f"[MOTOR] Left: {left}, Right: {right}")
 
 if __name__ == "__main__":
     print("[✅] Flask + SocketIO server is running!")
